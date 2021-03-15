@@ -17,9 +17,7 @@ const start = async () => {
   app.use(express.static(path.join(__dirname, '/../', 'static')))
 
   // A single "controller" function, to search and/or retrieve all names
-  const getNames = ({
-    search
-  }) => {
+  const getNames = ({ search }) => {
     const names = ['Derrick', 'Bhanu', 'Meenakshi', 'Preethesh', 'Ruturaj']
     const data = search
       ? names.filter(name => name.match(new RegExp(`^${search}`, 'i')))
