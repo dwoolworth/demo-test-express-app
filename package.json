@@ -1,0 +1,30 @@
+{
+  "name": "testapp",
+  "author": "dtw",
+  "version": "1.0.0",
+  "description": "Simple demo-test application for express",
+  "license": "ISC",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/index.js --watch ./src",
+    "clean": "rimraf build",
+    "build": "babel ./src --out-dir ./build",
+    "build:all": "npm-run-all clean build:",
+    "start": "cross-env NODE_ENV=production node ./build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "cross-env": "^7.0.3",
+    "nodemon": "^1.18.9",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2"
+  }
+}

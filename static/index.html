@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Demo Test Welcome</title>
+    <style type="text/css">
+    div {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+    }
+    </style>
+    <script type="text/javascript">
+      const xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+          const names = JSON.parse(this.responseText)
+          const ul = document.querySelector('ul')
+          names.forEach(n => {
+            const li = document.createElement('li')
+            li.appendChild(document.createTextNode(n))
+            ul.appendChild(li)
+          })
+        } else if (this.readyState === 4 && this.status === 404) {
+          const ul = document.querySelector('ul')
+          const li = document.createElement('li')
+          li.appendChild(document.createTextNode('No names found'))
+          ul.appendChild(li)
+        }
+      }
+      document.onreadystatechange = () => {
+        if (document.readyState === 'complete') {
+          const params = (new URL(document.location)).searchParams
+          const search = params.get('search')
+            ? `?search=${params.get('search')}`
+            : ''
+          xhttp.open('GET', `/api/names${search}`)
+          console.log(`calling get to /api/names${search}`)
+          xhttp.send();
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <h3>List of names:</h3>
+      <ul></ul>
+    </div>
+  </body>
+</html>
