@@ -6,7 +6,7 @@ to set a boilerplate/template for future work or to play around with.
 
 To install:
 ``` bash
-$ npm intall
+$ npm install
 $ npm run dev
 ```
 
