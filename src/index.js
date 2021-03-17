@@ -25,7 +25,7 @@ const start = async () => {
     return {
       code: !data ? 404 : 200,
       data
-    }    
+    }
   }
 
   // A "route" function, to intercept the URI and call the controller
